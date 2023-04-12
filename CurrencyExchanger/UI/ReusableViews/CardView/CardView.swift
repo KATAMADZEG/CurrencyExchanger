@@ -69,7 +69,7 @@ final class CardView: UIView {
     var type : CardViewType!
     weak var delegate : CardViewDelegate?
 
-    init(type:CardViewType) {
+    init(type:CardViewType? = nil) {
         super.init(frame: .zero)
         self.type  = type
         self.configureUI()

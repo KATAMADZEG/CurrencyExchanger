@@ -4,7 +4,7 @@ import TinyConstraints
 import Combine
 
 final class CurrencyExchangeVC: UIViewController {
-    
+
     //MARK: - Properties
     lazy var contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height + 40)
     private lazy var topBarView = TopBarView(titleText: "კონვერტაცია", navController: self.navigationController)
@@ -96,14 +96,13 @@ final class CurrencyExchangeVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         cardViewFrom.delegate = self
         cardViewTo.delegate = self
-        self.registerKeyboardEvent()
+        registerKeyboardEvent()
         view.backgroundColor  =  .white
-        self.configureUI()
-        self.configureTextFields()
-
+        configureUI()
+        configureTextFields()
+        configureCards(data:  viewModel.whichCurrencyWeWantChoose(), type: nil)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -165,36 +164,64 @@ final class CurrencyExchangeVC: UIViewController {
         currencyExchangeButton.trailing(to: stackViewForFields)
         currencyExchangeButton.topToBottom(of: stackViewForFields,offset: 16)
         currencyExchangeButton.height(48)
+
     }
+        
     private func configureTextFields() {
+       
         buyCurrencyTextField.throughText.map{$0}.sink(receiveValue: {[self] buyText in
-            print(buyText)
-            viewModel.fromAmount = buyText
-            viewModel.fromCurrency = "USD"
-            viewModel.toCurrency = "EUR"
+            guard let fromAmount = Double(buyText) else { return sellCurrencyTextField.text = "" }
+            guard let symbolFrom = buyCurrencyTextField.currencyLabel.text else { return }
+            guard let symbolTo = sellCurrencyTextField.currencyLabel.text else { return }
+            viewModel.fillCurrencies(fromAmount: fromAmount, currencySimbolFrom: symbolFrom, currencySimbolTo: symbolTo)
             viewModel.input.getExchangedMoney(type: .Buy)
             viewModel.output = self
         })
         .store(in: &subscriptions)
         sellCurrencyTextField.throughText.map{$0}.sink(receiveValue: {[self] sellText in
-            print(sellText)
-            viewModel.fromAmount = sellText
-            viewModel.fromCurrency = "EUR"
-            viewModel.toCurrency = "USD"
+            guard let fromAmount = Double(sellText) else { return buyCurrencyTextField.text = "" }
+            guard let symbolFrom = sellCurrencyTextField.currencyLabel.text else { return }
+            guard let symbolTo = buyCurrencyTextField.currencyLabel.text else { return }
+            viewModel.fillCurrencies(fromAmount: fromAmount, currencySimbolFrom: symbolFrom, currencySimbolTo: symbolTo)
             viewModel.input.getExchangedMoney(type: .Sell)
             viewModel.output = self
         })
         .store(in: &subscriptions)
     }
+
     //MARK: - Actions
     @objc func tapAnEchangeButton() {
         print("sadjhaksjhdas")
+
+        guard let amountFrom = Double(buyCurrencyTextField.text!) else { return buyCurrencyTextField.text = "" }
+        guard let amountTo = Double(sellCurrencyTextField.text!) else { return buyCurrencyTextField.text = "" }
+        
+        
+        let skds = viewModel.transfer(amount: amountFrom, toAmount: amountTo)
+        
+        configureCards(data: skds, type: nil)
+        print(skds)
+//        if viewModel.transfer(amount: amount) {
+////            configureCards(data: fromAccLabel, type: .From)
+////            configureCards(data: toAccLabel, type: .To)
+//            print("wარმატებაა")
+//        }else{
+//
+//            print("dafeilda")
+//        }
     }
 }
 
 //MARK: - CurrencyExchangeViewModelOutput
+extension CurrencyExchangeVC: MyWalletVCDelegate {
+    func throwCardInfo(model: MyWalletModel, type: CardViewType) {
+        configureCards(data: [model],type: type )
+    }
+}
+//MARK: - CurrencyExchangeViewModelOutput
 extension CurrencyExchangeVC : CurrencyExchangeViewModelOutput {
     func response(data: CurrencyExchangeEndPoint.Response?, error: Error?, type: FieldType) {
+//        currencyExchangeButton.isEnabled = data != nil
         switch type {
         case .Buy:
             sellCurrencyTextField.text = data?.amount
@@ -203,18 +230,45 @@ extension CurrencyExchangeVC : CurrencyExchangeViewModelOutput {
         }
     }
 }
-
+//MARK: - CardDelegate
+extension CurrencyExchangeVC: CardDelegate {
+    func configureCards(data: [MyWalletModel], type: CardViewType?) {
+        switch type {
+        case .From:
+            buyCurrencyTextField.currencyLabel.text = data.first?.currencySymbol
+            guard let amountFrom  = data.first?.balance else { return }
+            guard let symbolFrom  = data.first?.currencySymbol else { return }
+            cardViewFrom.moneyLabel.attributedTitle(firstPart: "\(amountFrom) ", secondPart: symbolFrom)
+            cardViewFrom.cardNumLabel.text = data.first?.cardAccNum
+        case .To:
+            sellCurrencyTextField.currencyLabel.text = data.last?.currencySymbol
+            guard let amountTo  = data.last?.balance else { return }
+            guard let symbolTo  = data.last?.currencySymbol else { return }
+            cardViewTo.moneyLabel.attributedTitle(firstPart: "\(amountTo) ", secondPart: symbolTo)
+            cardViewTo.cardNumLabel.text = data.last?.cardAccNum
+        case .none:
+            buyCurrencyTextField.currencyLabel.text = data.first?.currencySymbol
+            guard let amountFrom  = data.first?.balance else { return }
+            guard let symbolFrom  = data.first?.currencySymbol else { return }
+            cardViewFrom.moneyLabel.attributedTitle(firstPart: "\(amountFrom) ", secondPart: symbolFrom)
+            cardViewFrom.cardNumLabel.text = data.first?.cardAccNum
+            sellCurrencyTextField.currencyLabel.text = data.last?.currencySymbol
+            guard let amountTo  = data.last?.balance else { return }
+            guard let symbolTo  = data.last?.currencySymbol else { return }
+            cardViewTo.moneyLabel.attributedTitle(firstPart: "\(amountTo) ", secondPart: symbolTo)
+            cardViewTo.cardNumLabel.text = data.last?.cardAccNum
+            
+        }
+    }
+}
 //MARK: - CardViewDelegate
 extension CurrencyExchangeVC : CardViewDelegate {
     func tapToCard(type: CardViewType) {
         let vc  = MyWalletVC()
+        vc.viewModel.myWallet = viewModel.myWallet
+        vc.viewModel.type = type
+        vc.delegate = self
         self.navigationController?.pushViewController(vc, animated: true)
-        //        switch type {
-        //        case .From:
-        //            print("ანგარიშიდან")
-        //        case .To:
-        //            print("ანგარიშზე")
-        //        }
     }
 }
 

@@ -10,6 +10,14 @@
 		0F6302236F041A91A3E9DCD0 /* Pods_CurrencyExchanger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 904D822D2C840437A6AB7AE2 /* Pods_CurrencyExchanger.framework */; };
 		35E45311E0D3C33A4B2A0B98 /* Pods_CurrencyExchanger_CurrencyExchangerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5531F1541EFA2F36867F8D89 /* Pods_CurrencyExchanger_CurrencyExchangerUITests.framework */; };
 		DA1AA3BC29E57F9200FB99F9 /* MyWalletCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1AA3BB29E57F9200FB99F9 /* MyWalletCell.swift */; };
+		DA1AA3C729E696FD00FB99F9 /* Extensions + String.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1AA3C629E696FD00FB99F9 /* Extensions + String.swift */; };
+		DA1AA3C929E6973E00FB99F9 /* Extensions + UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1AA3C829E6973E00FB99F9 /* Extensions + UIColor.swift */; };
+		DA1AA3CB29E6977700FB99F9 /* Extensions + UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1AA3CA29E6977700FB99F9 /* Extensions + UILabel.swift */; };
+		DA1AA3CD29E697B300FB99F9 /* Extensions + UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1AA3CC29E697B300FB99F9 /* Extensions + UIView.swift */; };
+		DA1AA3CF29E697D700FB99F9 /* Extensions + Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1AA3CE29E697D600FB99F9 /* Extensions + Array.swift */; };
+		DA1AA3D229E69A2C00FB99F9 /* MyWalletModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1AA3D129E69A2C00FB99F9 /* MyWalletModel.swift */; };
+		DA1AA3D529E6A56000FB99F9 /* MyWalletHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1AA3D429E6A56000FB99F9 /* MyWalletHeader.swift */; };
+		DA1AA3D829E6C9B100FB99F9 /* MyWalletViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1AA3D729E6C9B100FB99F9 /* MyWalletViewModel.swift */; };
 		DA83BEAC29E2B99800CEB321 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA83BEAB29E2B99800CEB321 /* CardView.swift */; };
 		DA83BEAF29E2DBB200CEB321 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA83BEAE29E2DBB200CEB321 /* CustomTextField.swift */; };
 		DA83BEB429E3064C00CEB321 /* RDKeyboardEventHandlerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA83BEB329E3064C00CEB321 /* RDKeyboardEventHandlerProtocol.swift */; };
@@ -19,11 +27,7 @@
 		DAD0618329DEF75600EF9C3F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAD0618129DEF75600EF9C3F /* Main.storyboard */; };
 		DAD0618529DEF75700EF9C3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAD0618429DEF75700EF9C3F /* Assets.xcassets */; };
 		DAD0618829DEF75700EF9C3F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAD0618629DEF75700EF9C3F /* LaunchScreen.storyboard */; };
-		DAD0619329DEF75700EF9C3F /* CurrencyExchangerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD0619229DEF75700EF9C3F /* CurrencyExchangerTests.swift */; };
-		DAD0619D29DEF75700EF9C3F /* CurrencyExchangerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD0619C29DEF75700EF9C3F /* CurrencyExchangerUITests.swift */; };
-		DAD0619F29DEF75700EF9C3F /* CurrencyExchangerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD0619E29DEF75700EF9C3F /* CurrencyExchangerUITestsLaunchTests.swift */; };
 		DAD061B229DEF81F00EF9C3F /* CurrencyExchangeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD061B129DEF81F00EF9C3F /* CurrencyExchangeViewModel.swift */; };
-		DAD061B729DEF8E400EF9C3F /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD061B629DEF8E400EF9C3F /* Extensions.swift */; };
 		DAD061BA29DEFEEE00EF9C3F /* TopBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD061B929DEFEEE00EF9C3F /* TopBarView.swift */; };
 		DAD061BE29DF12BD00EF9C3F /* MyWalletVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD061BD29DF12BD00EF9C3F /* MyWalletVC.swift */; };
 		DADD379B29E3D51A00798734 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADD379A29E3D51A00798734 /* Endpoint.swift */; };
@@ -61,10 +65,18 @@
 		904D822D2C840437A6AB7AE2 /* Pods_CurrencyExchanger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CurrencyExchanger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD3DE9C99D0ACFDC8012673B /* Pods-CurrencyExchangerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CurrencyExchangerTests.debug.xcconfig"; path = "Target Support Files/Pods-CurrencyExchangerTests/Pods-CurrencyExchangerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DA1AA3BB29E57F9200FB99F9 /* MyWalletCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWalletCell.swift; sourceTree = "<group>"; };
+		DA1AA3C629E696FD00FB99F9 /* Extensions + String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions + String.swift"; sourceTree = "<group>"; };
+		DA1AA3C829E6973E00FB99F9 /* Extensions + UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions + UIColor.swift"; sourceTree = "<group>"; };
+		DA1AA3CA29E6977700FB99F9 /* Extensions + UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions + UILabel.swift"; sourceTree = "<group>"; };
+		DA1AA3CC29E697B300FB99F9 /* Extensions + UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions + UIView.swift"; sourceTree = "<group>"; };
+		DA1AA3CE29E697D600FB99F9 /* Extensions + Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions + Array.swift"; sourceTree = "<group>"; };
+		DA1AA3D129E69A2C00FB99F9 /* MyWalletModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWalletModel.swift; sourceTree = "<group>"; };
+		DA1AA3D429E6A56000FB99F9 /* MyWalletHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWalletHeader.swift; sourceTree = "<group>"; };
+		DA1AA3D729E6C9B100FB99F9 /* MyWalletViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWalletViewModel.swift; sourceTree = "<group>"; };
 		DA83BEAB29E2B99800CEB321 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		DA83BEAE29E2DBB200CEB321 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		DA83BEB329E3064C00CEB321 /* RDKeyboardEventHandlerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDKeyboardEventHandlerProtocol.swift; sourceTree = "<group>"; };
-		DAD0617829DEF75600EF9C3F /* CurrencyExchanger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CurrencyExchanger.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DAD0617829DEF75600EF9C3F /* CurrencyExchanger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = CurrencyExchanger.app; path = "/Users/quti/Desktop/CurrencyExchanger/build/Debug-iphoneos/CurrencyExchanger.app"; sourceTree = "<absolute>"; };
 		DAD0617B29DEF75600EF9C3F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DAD0617D29DEF75600EF9C3F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		DAD0617F29DEF75600EF9C3F /* CurrencyExchangeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyExchangeVC.swift; sourceTree = "<group>"; };
@@ -72,13 +84,9 @@
 		DAD0618429DEF75700EF9C3F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DAD0618729DEF75700EF9C3F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DAD0618929DEF75700EF9C3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DAD0618E29DEF75700EF9C3F /* CurrencyExchangerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CurrencyExchangerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		DAD0619229DEF75700EF9C3F /* CurrencyExchangerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyExchangerTests.swift; sourceTree = "<group>"; };
-		DAD0619829DEF75700EF9C3F /* CurrencyExchangerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CurrencyExchangerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		DAD0619C29DEF75700EF9C3F /* CurrencyExchangerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyExchangerUITests.swift; sourceTree = "<group>"; };
-		DAD0619E29DEF75700EF9C3F /* CurrencyExchangerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyExchangerUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		DAD0618E29DEF75700EF9C3F /* CurrencyExchangerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = CurrencyExchangerTests.xctest; path = "/Users/quti/Desktop/CurrencyExchanger/build/Debug-iphoneos/CurrencyExchangerTests.xctest"; sourceTree = "<absolute>"; };
+		DAD0619829DEF75700EF9C3F /* CurrencyExchangerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = CurrencyExchangerUITests.xctest; path = "/Users/quti/Desktop/CurrencyExchanger/build/Debug-iphoneos/CurrencyExchangerUITests.xctest"; sourceTree = "<absolute>"; };
 		DAD061B129DEF81F00EF9C3F /* CurrencyExchangeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyExchangeViewModel.swift; sourceTree = "<group>"; };
-		DAD061B629DEF8E400EF9C3F /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		DAD061B929DEFEEE00EF9C3F /* TopBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBarView.swift; sourceTree = "<group>"; };
 		DAD061BD29DF12BD00EF9C3F /* MyWalletVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWalletVC.swift; sourceTree = "<group>"; };
 		DADD379A29E3D51A00798734 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
@@ -140,14 +148,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		DA1AA3B929E57F5700FB99F9 /* MyWallet */ = {
-			isa = PBXGroup;
-			children = (
-				DA1AA3BA29E57F8000FB99F9 /* MyWalletCell */,
-			);
-			path = MyWallet;
-			sourceTree = "<group>";
-		};
 		DA1AA3BA29E57F8000FB99F9 /* MyWalletCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -156,11 +156,88 @@
 			path = MyWalletCell;
 			sourceTree = "<group>";
 		};
+		DA1AA3BD29E68CA100FB99F9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DADD37A429E3D6A400798734 /* CurrencyExchangeModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		DA1AA3BE29E68CA600FB99F9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DAD0617F29DEF75600EF9C3F /* CurrencyExchangeVC.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DA1AA3BF29E68CFB00FB99F9 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				DA1AA3D729E6C9B100FB99F9 /* MyWalletViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		DA1AA3C029E68D0200FB99F9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DA1AA3D329E6A54700FB99F9 /* MyWalletHeader */,
+				DA1AA3BA29E57F8000FB99F9 /* MyWalletCell */,
+				DAD061BD29DF12BD00EF9C3F /* MyWalletVC.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DA1AA3C129E68D0600FB99F9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DA1AA3D129E69A2C00FB99F9 /* MyWalletModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		DA1AA3C229E691F200FB99F9 /* CurrencyExchange */ = {
+			isa = PBXGroup;
+			children = (
+				DADD37A129E3D5C900798734 /* CurrencyExchangeEndPoint.swift */,
+			);
+			path = CurrencyExchange;
+			sourceTree = "<group>";
+		};
+		DA1AA3C529E696E400FB99F9 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				DA1AA3C629E696FD00FB99F9 /* Extensions + String.swift */,
+				DA1AA3C829E6973E00FB99F9 /* Extensions + UIColor.swift */,
+				DA1AA3CA29E6977700FB99F9 /* Extensions + UILabel.swift */,
+				DA1AA3CC29E697B300FB99F9 /* Extensions + UIView.swift */,
+				DA1AA3CE29E697D600FB99F9 /* Extensions + Array.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		DA1AA3D029E6997800FB99F9 /* RDCore */ = {
+			isa = PBXGroup;
+			children = (
+				DA83BEB329E3064C00CEB321 /* RDKeyboardEventHandlerProtocol.swift */,
+			);
+			path = RDCore;
+			sourceTree = "<group>";
+		};
+		DA1AA3D329E6A54700FB99F9 /* MyWalletHeader */ = {
+			isa = PBXGroup;
+			children = (
+				DA1AA3D429E6A56000FB99F9 /* MyWalletHeader.swift */,
+			);
+			path = MyWalletHeader;
+			sourceTree = "<group>";
+		};
 		DA51AB7829E3D0170063112B /* UI */ = {
 			isa = PBXGroup;
 			children = (
 				DAD061AC29DEF7AA00EF9C3F /* ReusableViews */,
-				DA1AA3B929E57F5700FB99F9 /* MyWallet */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -181,19 +258,10 @@
 			path = CustomTextField;
 			sourceTree = "<group>";
 		};
-		DA83BEB129E2FB5E00CEB321 /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				DAD061AB29DEF77900EF9C3F /* CurrencyExchange */,
-				DAD061BC29DF126000EF9C3F /* MyWallet */,
-			);
-			path = Controllers;
-			sourceTree = "<group>";
-		};
 		DA83BEB229E3063D00CEB321 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				DA83BEB329E3064C00CEB321 /* RDKeyboardEventHandlerProtocol.swift */,
+				DA1AA3D029E6997800FB99F9 /* RDCore */,
 				DAD061B529DEF8CA00EF9C3F /* Utilis */,
 			);
 			path = Core;
@@ -203,22 +271,9 @@
 			isa = PBXGroup;
 			children = (
 				DAD0617A29DEF75600EF9C3F /* CurrencyExchanger */,
-				DAD0619129DEF75700EF9C3F /* CurrencyExchangerTests */,
-				DAD0619B29DEF75700EF9C3F /* CurrencyExchangerUITests */,
-				DAD0617929DEF75600EF9C3F /* Products */,
 				84826A6EDACD8E1B659557F3 /* Pods */,
 				C42842D65AFA62B6F862E8E9 /* Frameworks */,
 			);
-			sourceTree = "<group>";
-		};
-		DAD0617929DEF75600EF9C3F /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				DAD0617829DEF75600EF9C3F /* CurrencyExchanger.app */,
-				DAD0618E29DEF75700EF9C3F /* CurrencyExchangerTests.xctest */,
-				DAD0619829DEF75700EF9C3F /* CurrencyExchangerUITests.xctest */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		DAD0617A29DEF75600EF9C3F /* CurrencyExchanger */ = {
@@ -226,12 +281,13 @@
 			children = (
 				DAD0617B29DEF75600EF9C3F /* AppDelegate.swift */,
 				DAD0617D29DEF75600EF9C3F /* SceneDelegate.swift */,
-				DADD37A329E3D69800798734 /* Model */,
-				DADD37A029E3D5AB00798734 /* EndPoints */,
 				DADD379929E3D4F100798734 /* API */,
+				DADD37A029E3D5AB00798734 /* EndPoints */,
 				DA83BEB229E3063D00CEB321 /* Core */,
+				DA1AA3C129E68D0600FB99F9 /* Model */,
 				DA51AB7829E3D0170063112B /* UI */,
-				DA83BEB129E2FB5E00CEB321 /* Controllers */,
+				DAD061AB29DEF77900EF9C3F /* CurrencyExchange */,
+				DAD061BC29DF126000EF9C3F /* MyWallet */,
 				DAD0618129DEF75600EF9C3F /* Main.storyboard */,
 				DAD0618429DEF75700EF9C3F /* Assets.xcassets */,
 				DAD0618629DEF75700EF9C3F /* LaunchScreen.storyboard */,
@@ -240,28 +296,12 @@
 			path = CurrencyExchanger;
 			sourceTree = "<group>";
 		};
-		DAD0619129DEF75700EF9C3F /* CurrencyExchangerTests */ = {
-			isa = PBXGroup;
-			children = (
-				DAD0619229DEF75700EF9C3F /* CurrencyExchangerTests.swift */,
-			);
-			path = CurrencyExchangerTests;
-			sourceTree = "<group>";
-		};
-		DAD0619B29DEF75700EF9C3F /* CurrencyExchangerUITests */ = {
-			isa = PBXGroup;
-			children = (
-				DAD0619C29DEF75700EF9C3F /* CurrencyExchangerUITests.swift */,
-				DAD0619E29DEF75700EF9C3F /* CurrencyExchangerUITestsLaunchTests.swift */,
-			);
-			path = CurrencyExchangerUITests;
-			sourceTree = "<group>";
-		};
 		DAD061AB29DEF77900EF9C3F /* CurrencyExchange */ = {
 			isa = PBXGroup;
 			children = (
+				DA1AA3BD29E68CA100FB99F9 /* Model */,
+				DA1AA3BE29E68CA600FB99F9 /* View */,
 				DAD061B029DEF7F900EF9C3F /* ViewModel */,
-				DAD0617F29DEF75600EF9C3F /* CurrencyExchangeVC.swift */,
 			);
 			path = CurrencyExchange;
 			sourceTree = "<group>";
@@ -287,7 +327,7 @@
 		DAD061B529DEF8CA00EF9C3F /* Utilis */ = {
 			isa = PBXGroup;
 			children = (
-				DAD061B629DEF8E400EF9C3F /* Extensions.swift */,
+				DA1AA3C529E696E400FB99F9 /* Extensions */,
 			);
 			path = Utilis;
 			sourceTree = "<group>";
@@ -303,7 +343,8 @@
 		DAD061BC29DF126000EF9C3F /* MyWallet */ = {
 			isa = PBXGroup;
 			children = (
-				DAD061BD29DF12BD00EF9C3F /* MyWalletVC.swift */,
+				DA1AA3C029E68D0200FB99F9 /* View */,
+				DA1AA3BF29E68CFB00FB99F9 /* ViewModel */,
 			);
 			path = MyWallet;
 			sourceTree = "<group>";
@@ -321,17 +362,9 @@
 		DADD37A029E3D5AB00798734 /* EndPoints */ = {
 			isa = PBXGroup;
 			children = (
-				DADD37A129E3D5C900798734 /* CurrencyExchangeEndPoint.swift */,
+				DA1AA3C229E691F200FB99F9 /* CurrencyExchange */,
 			);
 			path = EndPoints;
-			sourceTree = "<group>";
-		};
-		DADD37A329E3D69800798734 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				DADD37A429E3D6A400798734 /* CurrencyExchangeModel.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -427,7 +460,7 @@
 				Base,
 			);
 			mainGroup = DAD0616F29DEF75600EF9C3F;
-			productRefGroup = DAD0617929DEF75600EF9C3F /* Products */;
+			productRefGroup = DAD0616F29DEF75600EF9C3F;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -578,16 +611,23 @@
 				DA83BEB429E3064C00CEB321 /* RDKeyboardEventHandlerProtocol.swift in Sources */,
 				DADD37A529E3D6A400798734 /* CurrencyExchangeModel.swift in Sources */,
 				DAD061B229DEF81F00EF9C3F /* CurrencyExchangeViewModel.swift in Sources */,
+				DA1AA3D529E6A56000FB99F9 /* MyWalletHeader.swift in Sources */,
+				DA1AA3D829E6C9B100FB99F9 /* MyWalletViewModel.swift in Sources */,
+				DA1AA3CF29E697D700FB99F9 /* Extensions + Array.swift in Sources */,
 				DADD37A229E3D5C900798734 /* CurrencyExchangeEndPoint.swift in Sources */,
+				DA1AA3D229E69A2C00FB99F9 /* MyWalletModel.swift in Sources */,
 				DADD379D29E3D54300798734 /* ArrayEncoding.swift in Sources */,
+				DA1AA3C729E696FD00FB99F9 /* Extensions + String.swift in Sources */,
 				DAD0618029DEF75600EF9C3F /* CurrencyExchangeVC.swift in Sources */,
+				DA1AA3CB29E6977700FB99F9 /* Extensions + UILabel.swift in Sources */,
+				DA1AA3C929E6973E00FB99F9 /* Extensions + UIColor.swift in Sources */,
 				DAD0617C29DEF75600EF9C3F /* AppDelegate.swift in Sources */,
 				DAD0617E29DEF75600EF9C3F /* SceneDelegate.swift in Sources */,
 				DAD061BA29DEFEEE00EF9C3F /* TopBarView.swift in Sources */,
 				DAD061BE29DF12BD00EF9C3F /* MyWalletVC.swift in Sources */,
 				DA1AA3BC29E57F9200FB99F9 /* MyWalletCell.swift in Sources */,
+				DA1AA3CD29E697B300FB99F9 /* Extensions + UIView.swift in Sources */,
 				DADD379B29E3D51A00798734 /* Endpoint.swift in Sources */,
-				DAD061B729DEF8E400EF9C3F /* Extensions.swift in Sources */,
 				DADD379F29E3D55F00798734 /* PostParameters.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -596,7 +636,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DAD0619329DEF75700EF9C3F /* CurrencyExchangerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -604,8 +643,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DAD0619D29DEF75700EF9C3F /* CurrencyExchangerUITests.swift in Sources */,
-				DAD0619F29DEF75700EF9C3F /* CurrencyExchangerUITestsLaunchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

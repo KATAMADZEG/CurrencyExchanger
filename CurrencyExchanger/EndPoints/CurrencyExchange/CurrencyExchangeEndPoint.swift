@@ -14,7 +14,7 @@ struct CurrencyExchangeEndPoint: Endpoint {
     var httpMethod: HTTPMethod = .get
     
     
-    var fromAmount      : String
+    var fromAmount      : Double
     var fromCurrency    : String
     var toCurrency      : String
     
