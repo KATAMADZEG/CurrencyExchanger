@@ -55,11 +55,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		19F51B3B3D3FD136E00A934A /* Pods-CurrencyExchangerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CurrencyExchangerTests.release.xcconfig"; path = "Target Support Files/Pods-CurrencyExchangerTests/Pods-CurrencyExchangerTests.release.xcconfig"; sourceTree = "<group>"; };
-		44A6D9D69898D5B28F3DDD5A /* Pods-CurrencyExchanger-CurrencyExchangerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CurrencyExchanger-CurrencyExchangerUITests.release.xcconfig"; path = "Target Support Files/Pods-CurrencyExchanger-CurrencyExchangerUITests/Pods-CurrencyExchanger-CurrencyExchangerUITests.release.xcconfig"; sourceTree = "<group>"; };
 		5C4D6FAD265F8907C260693B /* Pods-CurrencyExchanger.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CurrencyExchanger.release.xcconfig"; path = "Target Support Files/Pods-CurrencyExchanger/Pods-CurrencyExchanger.release.xcconfig"; sourceTree = "<group>"; };
-		8ACC0FB2520E3EFE49F3E89C /* Pods-CurrencyExchanger-CurrencyExchangerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CurrencyExchanger-CurrencyExchangerUITests.debug.xcconfig"; path = "Target Support Files/Pods-CurrencyExchanger-CurrencyExchangerUITests/Pods-CurrencyExchanger-CurrencyExchangerUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		BD3DE9C99D0ACFDC8012673B /* Pods-CurrencyExchangerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CurrencyExchangerTests.debug.xcconfig"; path = "Target Support Files/Pods-CurrencyExchangerTests/Pods-CurrencyExchangerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DA1AA3BB29E57F9200FB99F9 /* MyWalletCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWalletCell.swift; sourceTree = "<group>"; };
 		DA1AA3C629E696FD00FB99F9 /* Extensions + String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions + String.swift"; sourceTree = "<group>"; };
 		DA1AA3C829E6973E00FB99F9 /* Extensions + UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions + UIColor.swift"; sourceTree = "<group>"; };
@@ -69,9 +65,9 @@
 		DA1AA3D129E69A2C00FB99F9 /* MyWalletModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWalletModel.swift; sourceTree = "<group>"; };
 		DA1AA3D429E6A56000FB99F9 /* MyWalletHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWalletHeader.swift; sourceTree = "<group>"; };
 		DA1AA3D729E6C9B100FB99F9 /* MyWalletViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWalletViewModel.swift; sourceTree = "<group>"; };
+		DA20736429EEE40700117D80 /* CurrencyExchangerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = CurrencyExchangerTests.xctest; path = "/Users/quti/Desktop/CurrencyExchanger/build/Debug-iphoneos/CurrencyExchangerTests.xctest"; sourceTree = "<absolute>"; };
+		DA20736529EEE40700117D80 /* CurrencyExchangerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = CurrencyExchangerUITests.xctest; path = "/Users/quti/Desktop/CurrencyExchanger/build/Debug-iphoneos/CurrencyExchangerUITests.xctest"; sourceTree = "<absolute>"; };
 		DA61849029EE79B0007B3BD4 /* CurrencyExchanger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CurrencyExchanger.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		DA61849129EE79B0007B3BD4 /* CurrencyExchangerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = CurrencyExchangerTests.xctest; path = "/Users/quti/Desktop/CurrencyExchanger/build/Debug-iphoneos/CurrencyExchangerTests.xctest"; sourceTree = "<absolute>"; };
-		DA61849229EE79B0007B3BD4 /* CurrencyExchangerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = CurrencyExchangerUITests.xctest; path = "/Users/quti/Desktop/CurrencyExchanger/build/Debug-iphoneos/CurrencyExchangerUITests.xctest"; sourceTree = "<absolute>"; };
 		DA61849429EEA27B007B3BD4 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		DA61849A29EEACE7007B3BD4 /* SettingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingManager.swift; sourceTree = "<group>"; };
 		DA83BEAB29E2B99800CEB321 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
@@ -125,10 +121,6 @@
 			children = (
 				E3E54506F3D16F1646B6E36B /* Pods-CurrencyExchanger.debug.xcconfig */,
 				5C4D6FAD265F8907C260693B /* Pods-CurrencyExchanger.release.xcconfig */,
-				8ACC0FB2520E3EFE49F3E89C /* Pods-CurrencyExchanger-CurrencyExchangerUITests.debug.xcconfig */,
-				44A6D9D69898D5B28F3DDD5A /* Pods-CurrencyExchanger-CurrencyExchangerUITests.release.xcconfig */,
-				BD3DE9C99D0ACFDC8012673B /* Pods-CurrencyExchangerTests.debug.xcconfig */,
-				19F51B3B3D3FD136E00A934A /* Pods-CurrencyExchangerTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -396,7 +388,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DAD061A529DEF75700EF9C3F /* Build configuration list for PBXNativeTarget "CurrencyExchangerTests" */;
 			buildPhases = (
-				A0371B595BE60B7EECA9E412 /* [CP] Check Pods Manifest.lock */,
 				DAD0618A29DEF75700EF9C3F /* Sources */,
 				DAD0618B29DEF75700EF9C3F /* Frameworks */,
 				DAD0618C29DEF75700EF9C3F /* Resources */,
@@ -408,18 +399,16 @@
 			);
 			name = CurrencyExchangerTests;
 			productName = CurrencyExchangerTests;
-			productReference = DA61849129EE79B0007B3BD4 /* CurrencyExchangerTests.xctest */;
+			productReference = DA20736429EEE40700117D80 /* CurrencyExchangerTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		DAD0619729DEF75700EF9C3F /* CurrencyExchangerUITests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = DAD061A829DEF75700EF9C3F /* Build configuration list for PBXNativeTarget "CurrencyExchangerUITests" */;
 			buildPhases = (
-				BA183A0013E532B44223553B /* [CP] Check Pods Manifest.lock */,
 				DAD0619429DEF75700EF9C3F /* Sources */,
 				DAD0619529DEF75700EF9C3F /* Frameworks */,
 				DAD0619629DEF75700EF9C3F /* Resources */,
-				672BD7BEA297FF2F08B57DAA /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -428,7 +417,7 @@
 			);
 			name = CurrencyExchangerUITests;
 			productName = CurrencyExchangerUITests;
-			productReference = DA61849229EE79B0007B3BD4 /* CurrencyExchangerUITests.xctest */;
+			productReference = DA20736529EEE40700117D80 /* CurrencyExchangerUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -502,23 +491,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		672BD7BEA297FF2F08B57DAA /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-CurrencyExchanger-CurrencyExchangerUITests/Pods-CurrencyExchanger-CurrencyExchangerUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-CurrencyExchanger-CurrencyExchangerUITests/Pods-CurrencyExchanger-CurrencyExchangerUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CurrencyExchanger-CurrencyExchangerUITests/Pods-CurrencyExchanger-CurrencyExchangerUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		76FB0EAB43E211037C851CC6 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -556,50 +528,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CurrencyExchanger/Pods-CurrencyExchanger-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A0371B595BE60B7EECA9E412 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-CurrencyExchangerTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		BA183A0013E532B44223553B /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-CurrencyExchanger-CurrencyExchangerUITests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -860,7 +788,6 @@
 		};
 		DAD061A629DEF75700EF9C3F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BD3DE9C99D0ACFDC8012673B /* Pods-CurrencyExchangerTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -881,7 +808,6 @@
 		};
 		DAD061A729DEF75700EF9C3F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 19F51B3B3D3FD136E00A934A /* Pods-CurrencyExchangerTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -902,7 +828,6 @@
 		};
 		DAD061A929DEF75700EF9C3F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8ACC0FB2520E3EFE49F3E89C /* Pods-CurrencyExchanger-CurrencyExchangerUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -921,7 +846,6 @@
 		};
 		DAD061AA29DEF75700EF9C3F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 44A6D9D69898D5B28F3DDD5A /* Pods-CurrencyExchanger-CurrencyExchangerUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
