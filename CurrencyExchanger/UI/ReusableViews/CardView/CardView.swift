@@ -22,15 +22,13 @@ final class CardView: UIView {
         iv.image = UIImage(named: "cardIcon")
         return iv
     }()
-    
     private let titleLabel : UILabel = {
         let label = UILabel()
-        label.text = "Master Card"
+        label.text = "Card Name"
         label.font = label.font.withSize(12)
         label.textColor = UIColor().hexStringToUIColor(hex: "130F26", alpha: 1)
         return label
     }()
-    
      let cardNumLabel : UILabel = {
         let label = UILabel()
         label.text = "GE78****4553"
@@ -40,32 +38,27 @@ final class CardView: UIView {
         
         return label
     }()
-    
      let moneyLabel : UILabel = {
         let label = UILabel()
         label.text = "145698.38 $"
         label.attributedTitle(firstPart: "1243.09 ", secondPart: "$")
         return label
     }()
-    
-    private let rightArrowIcon : UIImageView = {
+     let rightArrowIcon : UIImageView = {
         let iv = UIImageView()
         iv.image = UIImage(named: "rightArrowIcon")
         
         return iv
     }()
-    
     private let helperView : UIView = {
         let view = UIView()
         return view
     }()
-    
     lazy var cardButton:UIButton =  {
         let buton = UIButton(type: .custom)
         buton.addTarget(self, action: #selector(tapToCardButton), for: .touchUpInside)
         return buton
     }()
-    
     var type : CardViewType!
     weak var delegate : CardViewDelegate?
 
@@ -74,11 +67,10 @@ final class CardView: UIView {
         self.type  = type
         self.configureUI()
     }
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+    //MARK: - Helpers
     private func configureUI() {
         let stackView = UIStackView(arrangedSubviews: [titleLabel,cardNumLabel])
         stackView.axis = .vertical
@@ -89,8 +81,8 @@ final class CardView: UIView {
         stackView.spacing = 11
         stackView.bottom(to: self)
         self.addSubview(cardImageView)
-        cardImageView.height(30)
-        cardImageView.width(48)
+        cardImageView.height(46)
+        cardImageView.width(46)
         cardImageView.left(to: self)
         cardImageView.centerY(to: stackView)
         stackView.leftToRight(of: cardImageView,offset: 16)

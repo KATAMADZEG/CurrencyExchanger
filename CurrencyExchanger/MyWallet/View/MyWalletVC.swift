@@ -15,18 +15,21 @@ protocol MyWalletVCDelegate: AnyObject {
 }
 final class MyWalletVC: UIViewController {
     //MARK: - Properties
-   lazy var  topBarView = TopBarView(titleText: "ანგარიშის არჩევა", navController: self.navigationController)
+    lazy var  topBarView = TopBarView(titleText: "ანგარიშის არჩევა", navController: self.navigationController)
     private lazy var myWalletTableView: UITableView = {
         let tv = UITableView(frame: .zero,style: .grouped)
-        tv.backgroundColor = .red
-        
-        
+        tv.separatorStyle = .none
+        tv.backgroundColor = .white
         return tv
     }()
     lazy  var dataSource: UITableViewDiffableDataSource<MyWalletSections,MyWalletModel> = {
         let dataSource : UITableViewDiffableDataSource<MyWalletSections,MyWalletModel> =   UITableViewDiffableDataSource(tableView: myWalletTableView) { tableView, indexPath, itemIdentifier in
             let cell = tableView.dequeueReusableCell(withIdentifier: "MyWalletCell", for: indexPath) as! MyWalletCell
-
+            cell.lineView.isHidden = false
+            cell.configureUI()
+            if indexPath.row == self.viewModel.myWallet.count - 1 {
+                cell.lineView.isHidden = true
+            }
             cell.configureModel(with: itemIdentifier)
             return cell
         }
@@ -47,7 +50,6 @@ final class MyWalletVC: UIViewController {
         myWalletTableView.topToBottom(of: topBarView)
         configureTableView()
     }
-
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = true

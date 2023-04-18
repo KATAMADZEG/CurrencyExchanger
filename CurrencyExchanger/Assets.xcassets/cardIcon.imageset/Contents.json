@@ -1,15 +1,17 @@
 {
   "images" : [
     {
+      "filename" : "Component 616.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "master-card-icon-13.jpg",
+      "filename" : "Component 616@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "Component 616@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

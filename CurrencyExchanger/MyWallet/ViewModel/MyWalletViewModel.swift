@@ -7,7 +7,7 @@
 
 import Foundation
 
-class MyWalletViewModel {
+final class MyWalletViewModel {
     var myWallet    = [MyWalletModel]()
     var type        : CardViewType = .From
 }

@@ -4,12 +4,10 @@ import TinyConstraints
 import Combine
 
 final class CurrencyExchangeVC: UIViewController {
-
     //MARK: - Properties
-    lazy var contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height + 40)
+    lazy var contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height+2)
     private lazy var topBarView = TopBarView(titleText: "კონვერტაცია", navController: self.navigationController)
-  
-    lazy var  scrollView : UIScrollView = {
+    lazy var  scrollView: UIScrollView = {
         let sc = UIScrollView(frame: .zero)
         sc.frame = CGRect(x: 0, y: 108, width: view.frame.size.width, height: view.frame.size.height)
         sc.contentSize = contentSize
@@ -17,55 +15,46 @@ final class CurrencyExchangeVC: UIViewController {
         sc.keyboardDismissMode = .onDrag
         return sc
     }()
-    
-    lazy var  contentView : UIView = {
-       let view  = UIView()
+    lazy var  contentView: UIView = {
+        let view  = UIView()
         view.backgroundColor = .clear
         view.frame.size = contentSize
         return view
     }()
-    
-    private let fromAccLabel : UILabel = {
+    private let fromAccLabel: UILabel = {
         let label = UILabel()
         label.text = "ანგარიშიდან"
         label.textColor = UIColor().hexStringToUIColor(hex: "4B5B6C", alpha: 1)
         label.font = label.font.withSize(12)
         return label
     }()
-    
-    private let toAccLabel : UILabel = {
+    private let toAccLabel: UILabel = {
         let label = UILabel()
         label.text = "ანგარიშზე"
         label.font = label.font.withSize(12)
         label.textColor = UIColor().hexStringToUIColor(hex: "4B5B6C", alpha: 1)
         return label
     }()
-    
     private let cardViewFrom  = CardView(type: .From)
     private let cardViewTo  = CardView(type: .To)
-    
     private let seperatorView  : UIView = {
-       let view  = UIView()
+        let view  = UIView()
         view.backgroundColor  = .white
         return view
     }()
-    
-    private let lineImage  : UIView = {
-       let iv  = UIImageView()
+    private let lineImage: UIView = {
+        let iv  = UIImageView()
         iv.backgroundColor  = UIColor().hexStringToUIColor(hex: "E5E7EC", alpha: 1)
         return iv
     }()
-    
-    lazy var swapAccButton : UIButton = {
+    lazy var swapAccButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "swapAccIcon"), for: .normal)
         button.backgroundColor  = .white
         return button
     }()
-    
     private var buyCurrencyTextField = CustomTextField(placeholder: "0.00",milliseconds: 300)
     private var sellCurrencyTextField = CustomTextField(placeholder: "0.00",milliseconds: 300)
-    
     private let buyCurrencyTitleLabel : UILabel = {
         let label = UILabel()
         label.text = "ყიდვის თანხა"
@@ -73,15 +62,14 @@ final class CurrencyExchangeVC: UIViewController {
         label.textColor = UIColor().hexStringToUIColor(hex: "4B5B6C", alpha: 1)
         return label
     }()
-    private let sellCurrencyTitleLabel : UILabel = {
+    private let sellCurrencyTitleLabel: UILabel = {
         let label = UILabel()
         label.text = "გაყიდვის თანხა"
         label.font = label.font.withSize(12)
         label.textColor = UIColor().hexStringToUIColor(hex: "4B5B6C", alpha: 1)
         return label
     }()
-    
-    lazy var currencyExchangeButton : UIButton = {
+    lazy var currencyExchangeButton: UIButton = {
         let button = UIButton(type: .custom)
         button.setTitle("გაგრძელება", for: .normal)
         button.setTitleColor(UIColor().hexStringToUIColor(hex: "130F26", alpha: 1), for: .normal)
@@ -93,7 +81,6 @@ final class CurrencyExchangeVC: UIViewController {
     private var subscriptions       = Set<AnyCancellable>()
     private var viewModel           = CurrencyExchangeViewModel()
     //MARK: - LifeCycles
-
     override func viewDidLoad() {
         super.viewDidLoad()
         cardViewFrom.delegate = self
@@ -107,8 +94,13 @@ final class CurrencyExchangeVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = true
+        guard let fromAmount = Double(buyCurrencyTextField.text!) else { return sellCurrencyTextField.text = "" }
+        guard let symbolFrom = buyCurrencyTextField.currencyLabel.text else { return }
+        guard let symbolTo = sellCurrencyTextField.currencyLabel.text else { return }
+        viewModel.fillCurrencies(fromAmount: fromAmount, currencySimbolFrom: symbolFrom, currencySimbolTo: symbolTo)
+        viewModel.getExchangedMoney(type: .Buy)
+        self.viewModel.output = self
     }
-
     //MARK: - Helpers
     private func configureUI() {
         self.view.addSubview(topBarView)
@@ -164,11 +156,8 @@ final class CurrencyExchangeVC: UIViewController {
         currencyExchangeButton.trailing(to: stackViewForFields)
         currencyExchangeButton.topToBottom(of: stackViewForFields,offset: 16)
         currencyExchangeButton.height(48)
-
     }
-        
     private func configureTextFields() {
-       
         buyCurrencyTextField.throughText.map{$0}.sink(receiveValue: {[self] buyText in
             guard let fromAmount = Double(buyText) else { return sellCurrencyTextField.text = "" }
             guard let symbolFrom = buyCurrencyTextField.currencyLabel.text else { return }
@@ -188,32 +177,26 @@ final class CurrencyExchangeVC: UIViewController {
         })
         .store(in: &subscriptions)
     }
-
     //MARK: - Actions
-    @objc func tapAnEchangeButton() {
-        print("sadjhaksjhdas")
-
-        guard let amountFrom = Double(buyCurrencyTextField.text!) else { return buyCurrencyTextField.text = "" }
-        guard let amountTo = Double(sellCurrencyTextField.text!) else { return buyCurrencyTextField.text = "" }
+    @objc private func tapAnEchangeButton() {
+        self.view.endEditing(true)
+        guard let amountFrom = Double(buyCurrencyTextField.text!) else { return }
+        guard let amountTo = Double(sellCurrencyTextField.text!) else { return }
         guard let symbolFrom = buyCurrencyTextField.currencyLabel.text else { return }
         guard let symbolTo = sellCurrencyTextField.currencyLabel.text else { return }
-        
-        
-        let skds = viewModel.transfer(amount: amountFrom, toAmount: amountTo, currencySimbolFrom: symbolFrom, currencySimbolTo: symbolTo)
-        
-        configureCards(data: skds, type: nil)
-        print(skds)
-//        if viewModel.transfer(amount: amount) {
-////            configureCards(data: fromAccLabel, type: .From)
-////            configureCards(data: toAccLabel, type: .To)
-//            print("wარმატებაა")
-//        }else{
-//
-//            print("dafeilda")
-//        }
+        let transfer = viewModel.transfer(amount: amountFrom, toAmount: amountTo, currencySimbolFrom: symbolFrom, currencySimbolTo: symbolTo)
+        if transfer.ifHasBalance == false {
+            AlertView.showAlert(vc: self, message: "არასაკმარისი თანხა")
+            return
+        }
+        if transfer.commissionFee != nil {
+            let roundedCommissionFe = String(format: "%.2f", transfer.commissionFee!)
+            let roundedBalance = String(format: "%.2f", transfer.model.last?.balance ?? 0.0)
+            AlertView.showAlert(vc: self, message: "თქვენ გადაახურდავეთ: \(amountFrom) \(symbolFrom) თქვენი ბალანსია: \(roundedBalance) საკომისიო: \(roundedCommissionFe)")
+        }
+        configureCards(data: transfer.model, type: nil)
     }
 }
-
 //MARK: - CurrencyExchangeViewModelOutput
 extension CurrencyExchangeVC: MyWalletVCDelegate {
     func throwCardInfo(model: MyWalletModel, type: CardViewType) {
@@ -223,7 +206,6 @@ extension CurrencyExchangeVC: MyWalletVCDelegate {
 //MARK: - CurrencyExchangeViewModelOutput
 extension CurrencyExchangeVC : CurrencyExchangeViewModelOutput {
     func response(data: CurrencyExchangeEndPoint.Response?, error: Error?, type: FieldType) {
-//        currencyExchangeButton.isEnabled = data != nil
         switch type {
         case .Buy:
             sellCurrencyTextField.text = data?.amount
@@ -269,6 +251,7 @@ extension CurrencyExchangeVC: CardDelegate {
 //MARK: - CardViewDelegate
 extension CurrencyExchangeVC : CardViewDelegate {
     func tapToCard(type: CardViewType) {
+        self.view.endEditing(true)
         let vc  = MyWalletVC()
         vc.viewModel.myWallet = viewModel.myWallet
         vc.viewModel.type = type
@@ -276,21 +259,22 @@ extension CurrencyExchangeVC : CardViewDelegate {
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
-
 //MARK: - RDKeyboardEventHandlerProtocol
 extension CurrencyExchangeVC : RDKeyboardEventHandlerProtocol {
     func keyboardWillShow(notification: NSNotification) {
-        guard let userInfo = notification.userInfo ,
-              let duration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double,
-              let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue
+        guard let userInfo = notification.userInfo,
+              let duration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double
         else {return}
-        let keyboardHeight = keyboardFrame.cgRectValue.height
-        print("\(keyboardHeight)height")
-//        self.scrollView.contentOffset.y += 60
+        UIView.animate(withDuration: duration, delay: 0.01) {
+            self.scrollView.contentOffset.y = 60
+        }
     }
     func keyboardWillHide(notification: NSNotification) {
         guard let userInfo = notification.userInfo ,
               let duration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double
         else {return}
+        UIView.animate(withDuration: duration, delay: 0.01) {
+            self.scrollView.contentOffset.y = 0
+        }
     }
 }
