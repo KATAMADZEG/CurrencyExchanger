@@ -36,21 +36,29 @@ final class CurrencyExchangeViewModel: CurrencyExchangeViewModelType {
     private var fromAmount: Double?
     private var fromCurrency: String?
     private var toCurrency: String?
-    private var fromAcc: MyWalletModel!
-    private var toAcc: MyWalletModel!
+    private var fromIndex = 0
+    private var toIndex = 0
     var myWallet = [MyWalletModel]()
+   
     
     //MARK: - Helpers
+    private func getAccByIndex(currencySimbolFrom: String,currencySimbolTo: String) -> (fromAcc:MyWalletModel?,tooAcc:MyWalletModel?){
+        if let indexFrom = myWallet.firstIndex(where: {$0.currencySymbol == currencySimbolFrom }),let indexTo =  myWallet.firstIndex(where: {$0.currencySymbol == currencySimbolTo }) {
+            fromIndex = indexFrom
+            toIndex = indexTo
+            return (myWallet[indexFrom],myWallet[indexTo])
+        }
+        return (nil,nil)
+    }
+    
     func fillCurrencies(fromAmount: Double,currencySimbolFrom: String,currencySimbolTo: String) {
         self.fromAmount = fromAmount
-        if let index = myWallet.firstIndex(where: {$0.currencySymbol == currencySimbolFrom }) {
-            fromAcc = myWallet[index]
-            fromCurrency = myWallet[index].currency
-        }
-        if let index = myWallet.firstIndex(where: {$0.currencySymbol == currencySimbolTo}) {
-            toAcc =  myWallet[index]
-            toCurrency = myWallet[index].currency
-        }
+        guard let fromAcc = getAccByIndex(currencySimbolFrom: currencySimbolFrom, currencySimbolTo: currencySimbolTo).fromAcc,
+              let toAcc = getAccByIndex(currencySimbolFrom: currencySimbolFrom, currencySimbolTo: currencySimbolTo).tooAcc else { return }
+        myWallet[fromIndex] = fromAcc
+        myWallet[toIndex] = toAcc
+        fromCurrency = fromAcc.currency
+        toCurrency = toAcc.currency
     }
     private func fillMyWallet() {
         myWallet.removeAll()
@@ -59,19 +67,20 @@ final class CurrencyExchangeViewModel: CurrencyExchangeViewModelType {
         myWallet.append(MyWalletModel(amount: 0, currency: "EUR",currencySymbol: "€", cardAccNum: "GE******09"))
         myWallet.append(MyWalletModel(amount: 100, currency: "GEL",currencySymbol: "₾", cardAccNum: "GE******08"))
     }
-    func transfer(amount:Double,toAmount:Double) -> [MyWalletModel] {
-        
+    func transfer(amount:Double,toAmount:Double,currencySimbolFrom:String,currencySimbolTo:String) -> [MyWalletModel] {
+        guard var fromAcc = getAccByIndex(currencySimbolFrom: currencySimbolFrom, currencySimbolTo: currencySimbolTo).fromAcc,
+              var toAcc = getAccByIndex(currencySimbolFrom: currencySimbolFrom, currencySimbolTo: currencySimbolTo).tooAcc else { return [] }
         guard fromAcc.balance ?? 0.0 >= amount else {
             return []
         }
-        
-        fromAcc?.balance! -= amount
-        toAcc?.balance! += toAmount
-        
+        fromAcc.balance! -= amount
+        toAcc.balance! += toAmount
+        myWallet[fromIndex] = fromAcc
+        myWallet[toIndex] = toAcc
         var result = [MyWalletModel]()
         result.removeAll()
-        result.append(fromAcc!)
-        result.append(toAcc!)
+        result.append(fromAcc)
+        result.append(toAcc)
         
         return result
     }

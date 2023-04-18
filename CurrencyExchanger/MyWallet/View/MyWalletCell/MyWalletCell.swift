@@ -31,8 +31,9 @@ class MyWalletCell: UITableViewCell {
     }
     
     func configureModel(with model: MyWalletModel) {
+        let roundedBalance = String(format: "%.2f", model.balance ?? 0.0)
         cardView.cardNumLabel.text = model.cardAccNum ?? ""
-        cardView.moneyLabel.text = "\(model.balance ?? 0.0) \(model.currencySymbol ?? "")"
+        cardView.moneyLabel.text = "\(roundedBalance) \(model.currencySymbol ?? "")"
     
     }
 }

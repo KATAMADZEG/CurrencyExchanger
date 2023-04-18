@@ -195,9 +195,11 @@ final class CurrencyExchangeVC: UIViewController {
 
         guard let amountFrom = Double(buyCurrencyTextField.text!) else { return buyCurrencyTextField.text = "" }
         guard let amountTo = Double(sellCurrencyTextField.text!) else { return buyCurrencyTextField.text = "" }
+        guard let symbolFrom = buyCurrencyTextField.currencyLabel.text else { return }
+        guard let symbolTo = sellCurrencyTextField.currencyLabel.text else { return }
         
         
-        let skds = viewModel.transfer(amount: amountFrom, toAmount: amountTo)
+        let skds = viewModel.transfer(amount: amountFrom, toAmount: amountTo, currencySimbolFrom: symbolFrom, currencySimbolTo: symbolTo)
         
         configureCards(data: skds, type: nil)
         print(skds)
@@ -238,26 +240,29 @@ extension CurrencyExchangeVC: CardDelegate {
             buyCurrencyTextField.currencyLabel.text = data.first?.currencySymbol
             guard let amountFrom  = data.first?.balance else { return }
             guard let symbolFrom  = data.first?.currencySymbol else { return }
-            cardViewFrom.moneyLabel.attributedTitle(firstPart: "\(amountFrom) ", secondPart: symbolFrom)
+            let roundedAmountFrom =  String(format: "%.2f", amountFrom)
+            cardViewFrom.moneyLabel.attributedTitle(firstPart: "\(roundedAmountFrom) ", secondPart: symbolFrom)
             cardViewFrom.cardNumLabel.text = data.first?.cardAccNum
         case .To:
             sellCurrencyTextField.currencyLabel.text = data.last?.currencySymbol
             guard let amountTo  = data.last?.balance else { return }
             guard let symbolTo  = data.last?.currencySymbol else { return }
-            cardViewTo.moneyLabel.attributedTitle(firstPart: "\(amountTo) ", secondPart: symbolTo)
+            let roundedAmountTo =  String(format: "%.2f", amountTo)
+            cardViewTo.moneyLabel.attributedTitle(firstPart: "\(roundedAmountTo) ", secondPart: symbolTo)
             cardViewTo.cardNumLabel.text = data.last?.cardAccNum
         case .none:
             buyCurrencyTextField.currencyLabel.text = data.first?.currencySymbol
             guard let amountFrom  = data.first?.balance else { return }
             guard let symbolFrom  = data.first?.currencySymbol else { return }
-            cardViewFrom.moneyLabel.attributedTitle(firstPart: "\(amountFrom) ", secondPart: symbolFrom)
+            let roundedAmountFrom =  String(format: "%.2f", amountFrom)
+            cardViewFrom.moneyLabel.attributedTitle(firstPart: "\(roundedAmountFrom) ", secondPart: symbolFrom)
             cardViewFrom.cardNumLabel.text = data.first?.cardAccNum
             sellCurrencyTextField.currencyLabel.text = data.last?.currencySymbol
             guard let amountTo  = data.last?.balance else { return }
             guard let symbolTo  = data.last?.currencySymbol else { return }
-            cardViewTo.moneyLabel.attributedTitle(firstPart: "\(amountTo) ", secondPart: symbolTo)
+            let roundedAmountTo =  String(format: "%.2f", amountTo)
+            cardViewTo.moneyLabel.attributedTitle(firstPart: "\(roundedAmountTo) ", secondPart: symbolTo)
             cardViewTo.cardNumLabel.text = data.last?.cardAccNum
-            
         }
     }
 }
